@@ -1,39 +1,24 @@
-// Simple event calendar implementation using JavaScript
-document.addEventListener('DOMContentLoaded', function () {
-    const calendarContainer = document.getElementById('calendar-container');
+document.addEventListener('DOMContentLoaded', () => {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const appearOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
 
-    const events = [
-        { date: '2024-07-20', title: 'Anime Expo 2024' },
-        { date: '2024-08-15', title: 'Cosplay Workshop' },
-        { date: '2024-10-31', title: 'Halloween Cosplay Party' }
-    ];
-
-    function renderCalendar(events) {
-        const calendarTable = document.createElement('table');
-        const headerRow = document.createElement('tr');
-        const headers = ['Date', 'Event'];
-
-        headers.forEach(header => {
-            const th = document.createElement('th');
-            th.textContent = header;
-            headerRow.appendChild(th);
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+                entry.target.classList.remove('disappear');
+            } else {
+                entry.target.classList.remove('appear');
+                entry.target.classList.add('disappear');
+            }
         });
-
-        calendarTable.appendChild(headerRow);
-
-        events.forEach(event => {
-            const row = document.createElement('tr');
-            const dateCell = document.createElement('td');
-            dateCell.textContent = event.date;
-            const titleCell = document.createElement('td');
-            titleCell.textContent = event.title;
-            row.appendChild(dateCell);
-            row.appendChild(titleCell);
-            calendarTable.appendChild(row);
-        });
-
-        calendarContainer.appendChild(calendarTable);
-    }
-
-    renderCalendar(events);
+    }, appearOptions);
+    
+    fadeElements.forEach(element => {
+        appearOnScroll.observe(element);
+    });
 });
