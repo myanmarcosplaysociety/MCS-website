@@ -1,11 +1,8 @@
 body {
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 header {
@@ -38,7 +35,6 @@ nav ul li a {
 
 main {
     padding: 20px;
-    flex: 1;
 }
 
 #intro {
@@ -46,9 +42,9 @@ main {
 }
 
 .image-placeholder img {
-    border-radius: 50%;
+    border-radius: 20%;
     border: 5px solid #fff;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
 .image-placeholder img:hover {
@@ -65,10 +61,10 @@ main {
 }
 
 /* Unique font style for "Our Organization" text */
-.org-title {
-    font-family: 'Comic Sans MS', cursive;
-    font-size: 2.5em;
-    animation: colorChange 5s infinite;
+#organization h2 {
+    font-family: 'Comic Sans MS', cursive; /* Use a custom font */
+    font-size: 2.5em; /* Adjust the font size */
+    animation: colorChange 5s infinite; /* Color changing animation */
 }
 
 .photo-gallery {
@@ -79,9 +75,9 @@ main {
 }
 
 .photo-gallery img {
-    width: 200px;
+    width: 300px;
     height: 200px;
-    border-radius: 10px;
+    border-radius: 5px;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
@@ -108,18 +104,12 @@ main {
 footer {
     background-color: #333;
     color: #fff;
-    text-align: center;
+    text-align: center; /* Center the text */
     padding: 10px 0;
-    width: 100%;
-    position: sticky;
-    bottom: 0;
+    width: 100%; /* Take up full width */
+    position: absolute; /* Position absolutely */
+    bottom: 0; /* Stick to the bottom */
+    left: 0; /* Align to the left */
 }
 
-/* CSS animation for color changing */
-@keyframes colorChange {
-    0% { color: #ff0000; } /* Red */
-    25% { color: #00ff00; } /* Green */
-    50% { color: #0000ff; } /* Blue */
-    75% { color: #ffff00; } /* Yellow */
-    100% { color: #ff00ff; } /* Magenta */
-}
+
